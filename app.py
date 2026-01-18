@@ -19,7 +19,7 @@ class Handler(BaseHTTPRequestHandler):
             self._respond(200, {"ready": True})
         else:
             self._respond(200, {
-                "message": "Hello from GoldenPath IDP!",
+                "message": "Hello from GoldenPath IDP! hello here",
                 "version": VERSION,
                 "environment": ENV
             })
@@ -37,7 +37,7 @@ class Handler(BaseHTTPRequestHandler):
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "8080"))
     server = HTTPServer(("0.0.0.0", port), Handler)
-    print(f"GoldenPath IDP - Hello World we made it here again and agan rr 5555")
+    print(f"GoldenPath IDP - Hello World")
     print(f"Version: {VERSION}")
     print(f"Server running on :{port}")
     server.serve_forever()
