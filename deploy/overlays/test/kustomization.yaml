@@ -1,0 +1,38 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: apps
+
+resources:
+  - ../../base
+  - namespace.yaml
+
+images:
+  - name: hello-goldenpath-idp
+    newName: 339712971032.dkr.ecr.eu-west-2.amazonaws.com/hello-goldenpath-idp
+    # Tag managed by Argo CD Image Updater
+    newTag: latest
+
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/template/spec/imagePullSecrets
+        value:
+          - name: ecr-pull-secret
+    target:
+      kind: Deployment
+      name: hello-goldenpath-idp
+  # Test: minimal replicas
+  - patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 1
+    target:
+      kind: Deployment
+      name: hello-goldenpath-idp
+
+configMapGenerator:
+  - name: hello-goldenpath-idp-config
+    literals:
+      - APP_ENV=test
+      - LOG_LEVEL=info

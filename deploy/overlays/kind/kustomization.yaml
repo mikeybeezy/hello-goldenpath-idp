@@ -1,0 +1,37 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Kind overlay: for images loaded directly via `kind load docker-image`
+# No ECR pull secret needed - image is pre-loaded into cluster nodes
+
+namespace: apps
+
+resources:
+  - ../../base
+  - namespace.yaml
+
+images:
+  - name: hello-goldenpath-idp
+    newName: 339712971032.dkr.ecr.eu-west-2.amazonaws.com/hello-goldenpath-idp
+    newTag: latest
+
+patches:
+  # Set imagePullPolicy to Never for Kind-loaded images
+  - patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/imagePullPolicy
+        value: Never
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: APP_ENV
+          value: kind
+    target:
+      kind: Deployment
+      name: hello-goldenpath-idp
+
+configMapGenerator:
+  - name: hello-goldenpath-idp-config
+    literals:
+      - APP_ENV=kind
+      - LOG_LEVEL=debug

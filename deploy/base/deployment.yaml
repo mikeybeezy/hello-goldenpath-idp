@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-goldenpath-idp
+  labels:
+    app: hello-goldenpath-idp
+    app.kubernetes.io/name: hello-goldenpath-idp
+    app.kubernetes.io/component: api
+    app.kubernetes.io/part-of: goldenpath-idp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-goldenpath-idp
+  template:
+    metadata:
+      labels:
+        app: hello-goldenpath-idp
+        app.kubernetes.io/name: hello-goldenpath-idp
+    spec:
+      containers:
+        - name: hello-goldenpath-idp
+          image: hello-goldenpath-idp:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              name: http
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          env:
+            - name: APP_ENV
+              value: "local"
