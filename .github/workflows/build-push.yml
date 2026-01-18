@@ -22,7 +22,7 @@ on:
           - 'false'
 
 env:
-  AWS_REGION: us-east-1
+  AWS_REGION: eu-west-2
   ECR_REPOSITORY: hello-goldenpath-idp
   IMAGE_TAG: ${{ github.sha }}
 
