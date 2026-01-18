@@ -37,7 +37,7 @@ class Handler(BaseHTTPRequestHandler):
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "8080"))
     server = HTTPServer(("0.0.0.0", port), Handler)
-    print(f"GoldenPath IDP - Hello World we made it here")
+    print(f"GoldenPath IDP - Hello World we made it here again")
     print(f"Version: {VERSION}")
     print(f"Server running on :{port}")
     server.serve_forever()
