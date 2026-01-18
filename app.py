@@ -29,6 +29,7 @@ HTML_PAGE = """
         }}
         .light {{ background-color: #ffffff; color: #1a1a1a; }}
         .dark {{ background-color: #1a1a1a; color: #ffffff; }}
+        .green {{ background-color: #22c55e; color: #ffffff; }}
         h1 {{ font-size: 2.5rem; margin-bottom: 1rem; }}
         .info {{ opacity: 0.7; margin-bottom: 2rem; }}
         .buttons {{ display: flex; gap: 1rem; }}
@@ -43,6 +44,7 @@ HTML_PAGE = """
         button:hover {{ transform: scale(1.05); }}
         .btn-white {{ background: #ffffff; color: #1a1a1a; }}
         .btn-black {{ background: #1a1a1a; color: #ffffff; }}
+        .btn-green {{ background: #22c55e; color: #ffffff; }}
     </style>
 </head>
 <body class="light">
@@ -51,6 +53,7 @@ HTML_PAGE = """
     <div class="buttons">
         <button class="btn-white" onclick="document.body.className='light'">White</button>
         <button class="btn-black" onclick="document.body.className='dark'">Black</button>
+        <button class="btn-green" onclick="document.body.className='green'">Green</button>
     </div>
 </body>
 </html>
