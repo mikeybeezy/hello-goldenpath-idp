@@ -67,7 +67,8 @@ jobs:
         if: github.event_name != 'pull_request'
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          PUSH_LATEST: ${{ inputs.push_latest != false }}
+          # Always push :latest for push events; for workflow_dispatch, check input
+          PUSH_LATEST: ${{ github.event_name == 'push' || inputs.push_latest == true }}
         run: |
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           if [ "$PUSH_LATEST" = "true" ]; then
