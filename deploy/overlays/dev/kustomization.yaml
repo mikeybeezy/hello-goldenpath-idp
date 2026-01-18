@@ -9,7 +9,7 @@ resources:
 
 images:
   - name: hello-goldenpath-idp
-    newName: 339712971032.dkr.ecr.eu-west-2.amazonaws.com/hello-goldenpath-idp
+    newName: 593517239005.dkr.ecr.eu-west-2.amazonaws.com/hello-goldenpath-idp
     # Tag managed by Argo CD Image Updater
     newTag: latest
 
