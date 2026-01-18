@@ -1,0 +1,24 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: hello-goldenpath-idp
+  title: Hello GoldenPath IDP
+  description: Lightweight test application for end-to-end build and deployment testing
+  annotations:
+    github.com/project-slug: mikeybeezy/hello-goldenpath-idp
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - python
+    - test-app
+    - goldenpath
+  links:
+    - url: https://github.com/mikeybeezy/hello-goldenpath-idp
+      title: GitHub Repository
+      icon: github
+spec:
+  type: service
+  lifecycle: experimental
+  owner: platform-team
+  system: goldenpath-idp
+  providesApis: []
+  consumesApis: []

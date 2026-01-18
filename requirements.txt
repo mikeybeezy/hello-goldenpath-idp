@@ -1,0 +1,7 @@
+# GoldenPath IDP - Hello World Dependencies
+# Empty for now - add packages here to test image scanning
+#
+# Examples (uncomment to add vulnerabilities for scanning tests):
+# requests==2.25.0      # CVE-2023-32681
+# urllib3==1.26.4       # CVE-2023-43804
+# pillow==9.0.0         # Multiple CVEs
