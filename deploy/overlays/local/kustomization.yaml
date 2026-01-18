@@ -8,11 +8,11 @@ resources:
   - namespace.yaml
 
 # Override image to use ECR
-# For local Kind: either use ECR with pull secret or load image directly
+# Tag is managed by argocd-image-updater (digest strategy)
 images:
   - name: hello-goldenpath-idp
     newName: 593517239005.dkr.ecr.eu-west-2.amazonaws.com/hello-goldenpath-idp
-    newTag: latest
+    # newTag intentionally omitted - controlled by argocd-image-updater
 
 patches:
   - patch: |-
