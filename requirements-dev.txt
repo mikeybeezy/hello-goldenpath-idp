@@ -1,0 +1,5 @@
+# Development dependencies for hello-goldenpath-idp
+# GOV-0014: Required for test stage execution
+
+pytest>=8.0.0
+pytest-cov>=4.0.0

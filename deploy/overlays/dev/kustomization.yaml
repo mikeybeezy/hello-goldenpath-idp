@@ -6,6 +6,7 @@ namespace: apps
 resources:
   - ../../base
   - namespace.yaml
+  - ingress.yaml
 
 images:
   - name: hello-goldenpath-idp

@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-goldenpath-idp
+  namespace: apps
+  annotations:
+    # TLS: Uncomment when letsencrypt-staging ClusterIssuer is configured
+    # cert-manager.io/cluster-issuer: letsencrypt-staging
+  labels:
+    app: hello-goldenpath-idp
+    app.kubernetes.io/name: hello-goldenpath-idp
+    app.kubernetes.io/part-of: goldenpath-idp
+spec:
+  ingressClassName: kong
+  rules:
+    - host: hello-goldenpath-idp.dev.goldenpathidp.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-goldenpath-idp
+                port:
+                  number: 80
+  # TLS: Uncomment when letsencrypt-staging ClusterIssuer is configured
+  # tls:
+  #   - hosts:
+  #       - hello-goldenpath-idp.dev.goldenpathidp.io
+  #     secretName: hello-goldenpath-idp-tls
