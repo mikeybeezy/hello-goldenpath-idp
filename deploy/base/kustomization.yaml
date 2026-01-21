@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - service.yaml
+  - dashboards/hello-goldenpath-idp-dashboard.yaml
 
 commonLabels:
   app.kubernetes.io/managed-by: argocd
