@@ -7,7 +7,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 import os
 
-VERSION = os.getenv("APP_VERSION", "1.0.0")
+VERSION = os.getenv("APP_VERSION", "1.1.0")
 ENV = os.getenv("ENV", "local")
 
 
@@ -31,6 +31,7 @@ HTML_PAGE = """
         .dark {{ background-color: #1a1a1a; color: #ffffff; }}
         .green {{ background-color: #22c55e; color: #ffffff; }}
         .yellow {{ background-color: #000000; color: #facc15; }}
+        .purple {{ background-color: #7c3aed; color: #facc15; }}
         h1 {{ font-size: 2.5rem; margin-bottom: 1rem; }}
         .info {{ opacity: 0.7; margin-bottom: 2rem; }}
         .buttons {{ display: flex; gap: 1rem; }}
@@ -47,6 +48,7 @@ HTML_PAGE = """
         .btn-black {{ background: #1a1a1a; color: #ffffff; }}
         .btn-green {{ background: #22c55e; color: #ffffff; }}
         .btn-yellow {{ background: #000000; color: #facc15; }}
+        .btn-purple {{ background: #7c3aed; color: #facc15; }}
     </style>
 </head>
 <body class="light">
@@ -57,6 +59,7 @@ HTML_PAGE = """
         <button class="btn-black" onclick="document.body.className='dark'">Black</button>
         <button class="btn-green" onclick="document.body.className='green'">Green</button>
         <button class="btn-yellow" onclick="document.body.className='yellow'">Black + Yellow</button>
+        <button class="btn-purple" onclick="document.body.className='purple'">Purple</button>
     </div>
 </body>
 </html>
