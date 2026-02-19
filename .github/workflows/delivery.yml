@@ -42,7 +42,7 @@ jobs:
       ecr_repository: hello-goldenpath-idp
       environment: ${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'dev' }}
       image_tag: ${{ inputs.image_tag || '' }}
-      skip_push: ${{ github.event_name == 'pull_request' }}
+      skip_push: ${{ github.event_name == 'pull_request' && true || false }}
       push_latest: true
       # Test configuration
       test_enabled: true
